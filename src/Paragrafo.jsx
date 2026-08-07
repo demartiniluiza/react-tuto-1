@@ -1,14 +1,24 @@
-import macaco from './assets/images.jpg'
+import { useState } from "react"
 
-function Paragrafo(){
+const Paragrafo = (props) => {
+    const [pontos, setPontos] = useState(0);
+
+    const aumentarPontos = () => {
+        setPontos(pontos + 1)
+    }
+
+    const diminuirPontos = () =>{
+        if(pontos > 0)
+            setPontos(pontos - 1)
+    }
 
     return (
-        <>
-            <p>Paragráfo explicativo</p>
-            <img src={macaco} alt="Macaco sorrindo" width="300
-            " />
-        </>
-    )
+        <div>
+            <p>{props.nome} tem {pontos} pontos.</p>
+            <button onClick={aumentarPontos}>+</button>
+            <button onClick={diminuirPontos}>-</button>
+        </div>
+    );
 }
 
-export default Paragrafo
+export default Paragrafo;
